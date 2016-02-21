@@ -46,14 +46,11 @@ def runAndPrint(filename):
     for slot in slots:
         print("slot: %6.2f %8.2f %8.2f   %s" % (
             float(slot.clickThruRate), float(slot.price), float(slot.profit), slot.bidder))
-    print ("  <-- click through rates")
+    #print ("  <-- click through rates")
     print(" ")
 
     '''0123在 Auction 初始化的时候打印出来 应该是看有没有塞进去 Auction.bids里面 '''
     auction = Auction(term, bids)
-
-    print("shit ")
-
 
     for b in auction.bids:
         # print ("%s\t%s"%(b.value,b.name))
@@ -80,9 +77,9 @@ def runAndPrint(filename):
 
 '''主函数调用import的数据'''
 if __name__ == '__main__':
-    runAndPrint("burgers.data.txt")
+    # runAndPrint("burgers.data.txt")
     # runAndPrint("etaMeson.data.txt")
     # runAndPrint("bicycleParts.data.txt")
     # runAndPrint("bicyclePartsDup.data.txt")
     # runAndPrint("jewelers5.data.txt")
-    # runAndPrint("jewelers8.data.txt")
+     runAndPrint("jewelers8.data.txt")

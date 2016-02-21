@@ -10,8 +10,8 @@ class Slot:
 	def __init__(self, ctr):
 		'@param sc a Scanner from which the click-through rate will be read'
 		if ctr is not None:
-			self.clickThruRate = int(ctr)
-			print ctr
+			self.clickThruRate = float(ctr)
+			#print ctr
 		else:
 			self.clickThruRate = 0
 

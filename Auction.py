@@ -13,7 +13,6 @@ class Auction:
 			j = 0
 			while j < len(self.bids) and b.value < self.bids[j].value:
 			    j += 1
-			#print len(self.bids), b.value, j
 			self.bids.insert(j, b)
 
 
@@ -26,20 +25,29 @@ class Auction:
 	the price said bidder must pay,
 	and the expected profit for the bidder.  
 	'''
+
     # slots bids
 	def executeVCG(self, slots):
+         # count is the index of bids[], and we will also use it to calculate with CTR
          count = 0
          for slot in slots:
-             #price
+             #calculated the price
              tempPrice = 0.0
+             # WithoutValue means the first slot without the relative advertisers, so that we can calculate the lost of others
              withoutValue = 0.0
              withinValue = 0.0
+             # Two different situations when the bids' length not equals to the slots' length
+             indexGap = 0
+             if len(self.bids) <= len(slots):
+                 indexGap = 0
+             else:
+                 indexGap = 1
 
-             for i in range( count + 1, len(self.bids) ):
-                 withoutValue += (slots[i - 1].clickThruRate * 1.0 * self.bids[i].value  )
+             for i in range(count + 1, self.smallOne(len(self.bids) , len(slots)) + indexGap ):
+                 withoutValue += (1.0 * self.bids[i].value * slots[i - 1].clickThruRate)
 
-             for j in range( count + 1, len(self.bids) ):
-                 withinValue += (slots[j].clickThruRate * 1.0 * self.bids[j].value)
+             for j in range( count + 1,  self.smallOne(len(self.bids) , len(slots))):
+                 withinValue += (1.0 * self.bids[j].value * slots[j].clickThruRate)
 
              tempPrice = (withoutValue - withinValue) * 1.0 / slot.clickThruRate
              slot.price = tempPrice
@@ -50,6 +58,12 @@ class Auction:
              #bidder
              slot.bidder = self.bids[count].name
              count += 1
+        # choose the smaller number and then output
+        def smallOne(self, a, b):
+            if a <= b:
+                return a
+            else:
+                return b
 
 
 
