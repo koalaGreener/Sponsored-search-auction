@@ -10,11 +10,13 @@ class Auction:
 		self.query = term
 		
 		for b in bids1:
-			j=0
-			print len(self.bids)
-			while j<len(self.bids) and b.value <self.bids[j].value:
-				j+=1
-			self.bids.insert(j,b)
+			j = 0
+			while j < len(self.bids) and b.value < self.bids[j].value:
+			    j += 1
+			#print len(self.bids), b.value, j
+			self.bids.insert(j, b)
+
+
 
 	'''
 	This method accepts a Vector of slots and fills it with the results
@@ -24,7 +26,32 @@ class Auction:
 	the price said bidder must pay,
 	and the expected profit for the bidder.  
 	'''
+    # slots bids
+	def executeVCG(self, slots):
+         count = 0
+         for slot in slots:
+             #price
+             tempPrice = 0.0
+             withoutValue = 0.0
+             withinValue = 0.0
 
-	def executeVCG(slots):
-		# TODO: implement this method
-		print ("executeVCG: To be implemented")
+             for i in range( count + 1, len(self.bids) ):
+                 withoutValue += (slots[i - 1].clickThruRate * 1.0 * self.bids[i].value  )
+
+             for j in range( count + 1, len(self.bids) ):
+                 withinValue += (slots[j].clickThruRate * 1.0 * self.bids[j].value)
+
+             tempPrice = (withoutValue - withinValue) * 1.0 / slot.clickThruRate
+             slot.price = tempPrice
+
+             #profit
+             slot.profit = (self.bids[count].value - slot.price) * slot.clickThruRate
+
+             #bidder
+             slot.bidder = self.bids[count].name
+             count += 1
+
+
+
+
+

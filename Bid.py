@@ -8,10 +8,10 @@ class Bid:
 	def __init__(self, line):
 		'@param line from file from which the value and name will be read'
 		if line is not None:
-			self.value = line.split('\t')[0]
+			self.value = int(line.split('\t')[0])
 			self.name = line.split('\t')[1]
 		else:
-			self.value = 0
+			self.value = 0.0
 			self.name = "empty"
 
 	#def toString(temp):
