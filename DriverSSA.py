@@ -77,9 +77,9 @@ def runAndPrint(filename):
 
 '''主函数调用import的数据'''
 if __name__ == '__main__':
-    # runAndPrint("burgers.data.txt")
+     runAndPrint("burgers.data.txt")
     # runAndPrint("etaMeson.data.txt")
     # runAndPrint("bicycleParts.data.txt")
     # runAndPrint("bicyclePartsDup.data.txt")
     # runAndPrint("jewelers5.data.txt")
-     runAndPrint("jewelers8.data.txt")
+    # runAndPrint("jewelers8.data.txt")
