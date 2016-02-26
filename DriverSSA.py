@@ -61,7 +61,7 @@ def runAndPrint(filename):
     print(" ")
     print("%12s %8s %8s %8s\n" % ("clicks", "price", "profit", "bidder"))
     for slot in slots:
-        print("slot: %6.2f %8.2f %8.2f   %s" % (
+        print("slot: %6.2f %8.3f %8.3f   %s" % (
             float(slot.clickThruRate), float(slot.price), float(slot.profit), slot.bidder))
 
     '''这三个应该是各个 column 的 sum的初始化'''
@@ -73,13 +73,13 @@ def runAndPrint(filename):
         cls += float(s.clickThruRate);
         rev += s.price;
         val += s.profit;
-    print ("sums: %6.2f %8.2f %8.2f\n" % (cls, rev, val))
+    print ("sums: %6.2f %8.3f %8.3f\n" % (cls, rev, val))
 
 '''主函数调用import的数据'''
 if __name__ == '__main__':
      runAndPrint("burgers.data.txt")
-    # runAndPrint("etaMeson.data.txt")
-    # runAndPrint("bicycleParts.data.txt")
-    # runAndPrint("bicyclePartsDup.data.txt")
-    # runAndPrint("jewelers5.data.txt")
-    # runAndPrint("jewelers8.data.txt")
+     #runAndPrint("etaMeson.data.txt")
+     #runAndPrint("bicycleParts.data.txt")
+     #runAndPrint("bicyclePartsDup.data.txt")
+     #runAndPrint("jewelers5.data.txt")
+     #runAndPrint("jewelers8.data.txt")

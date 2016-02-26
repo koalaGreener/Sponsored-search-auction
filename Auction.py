@@ -58,6 +58,10 @@ class Auction:
              #bidder
              slot.bidder = self.bids[count].name
              count += 1
+
+             if(self.smallOne(len(self.bids) , len(slots)) <= count):
+                 break
+
         # choose the smaller number and then output
         def smallOne(self, a, b):
             if a <= b:
